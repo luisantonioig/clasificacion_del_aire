@@ -1,10 +1,14 @@
 
+# Calidad del aire
+
 
 ```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 ```
+
+## Cargamos los datos
 
 
 ```python
@@ -160,6 +164,8 @@ ts.shape
 
 
 
+## Se quitan los datos que no sirven
+
 
 ```python
 ts = ts.drop(ts[ts["CO (mg/m3)"] == "No cumple el anexo IV de la Decisión del Consejo 97/101/CE"].index)
@@ -212,6 +218,8 @@ ts.dtypes
     dtype: object
 
 
+
+Veo si existen datos nulos y si existen los relleno con ceros
 
 
 ```python
@@ -368,6 +376,8 @@ ts.head()
 
 
 
+Se verifica que exista consistencia en las provincias y las estaciones.
+
 
 ```python
 ts.PROVINCIA.unique()
@@ -405,6 +415,8 @@ ts.ESTACIÓN.unique()
           dtype=object)
 
 
+
+Existen algunos formatos diferentes en las estaciones, en las siguientes lineas se formatean:
 
 
 ```python
@@ -448,6 +460,8 @@ ts.ESTACIÓN.unique()
            'Zamora 2', 'Avila II'], dtype=object)
 
 
+
+El formato de las estaciones ya está correcto y se concatenan la estación con la provincia para poder dividirlas:
 
 
 ```python
@@ -587,12 +601,16 @@ ts.head()
 
 
 
+Todas los datos de cada estación se agregan a un diccionario de python
+
 
 ```python
 tsS = {}
 for estacion in ts.concat.unique():
     tsS[estacion] = ts.iloc[:,:9][ts.iloc[:,11] == estacion]
 ```
+
+Se grafican los datos de cada estación
 
 
 ```python
@@ -622,13 +640,13 @@ for estacion in tsS:
     LEÓN - Ponferrada 1
     LEÓN - Ponferrada 2
     LEÓN - Ponferrada 3
-    LEÓN - Ponferrada 4
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/matplotlib/pyplot.py:522: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
       max_open_warning, RuntimeWarning)
 
 
+    LEÓN - Ponferrada 4
     LEÓN - Ponferrada 5
     PALENCIA - Guardo
     PALENCIA - Palencia 1
@@ -654,180 +672,182 @@ for estacion in tsS:
 
 
 
-![png](output_15_3.png)
+![png](output_24_3.png)
 
 
 
-![png](output_15_4.png)
+![png](output_24_4.png)
 
 
 
-![png](output_15_5.png)
+![png](output_24_5.png)
 
 
 
-![png](output_15_6.png)
+![png](output_24_6.png)
 
 
 
-![png](output_15_7.png)
+![png](output_24_7.png)
 
 
 
-![png](output_15_8.png)
+![png](output_24_8.png)
 
 
 
-![png](output_15_9.png)
+![png](output_24_9.png)
 
 
 
-![png](output_15_10.png)
+![png](output_24_10.png)
 
 
 
-![png](output_15_11.png)
+![png](output_24_11.png)
 
 
 
-![png](output_15_12.png)
+![png](output_24_12.png)
 
 
 
-![png](output_15_13.png)
+![png](output_24_13.png)
 
 
 
-![png](output_15_14.png)
+![png](output_24_14.png)
 
 
 
-![png](output_15_15.png)
+![png](output_24_15.png)
 
 
 
-![png](output_15_16.png)
+![png](output_24_16.png)
 
 
 
-![png](output_15_17.png)
+![png](output_24_17.png)
 
 
 
-![png](output_15_18.png)
+![png](output_24_18.png)
 
 
 
-![png](output_15_19.png)
+![png](output_24_19.png)
 
 
 
-![png](output_15_20.png)
+![png](output_24_20.png)
 
 
 
-![png](output_15_21.png)
+![png](output_24_21.png)
 
 
 
-![png](output_15_22.png)
+![png](output_24_22.png)
 
 
 
-![png](output_15_23.png)
+![png](output_24_23.png)
 
 
 
-![png](output_15_24.png)
+![png](output_24_24.png)
 
 
 
-![png](output_15_25.png)
+![png](output_24_25.png)
 
 
 
-![png](output_15_26.png)
+![png](output_24_26.png)
 
 
 
-![png](output_15_27.png)
+![png](output_24_27.png)
 
 
 
-![png](output_15_28.png)
+![png](output_24_28.png)
 
 
 
-![png](output_15_29.png)
+![png](output_24_29.png)
 
 
 
-![png](output_15_30.png)
+![png](output_24_30.png)
 
 
 
-![png](output_15_31.png)
+![png](output_24_31.png)
 
 
 
-![png](output_15_32.png)
+![png](output_24_32.png)
 
 
 
-![png](output_15_33.png)
+![png](output_24_33.png)
 
 
 
-![png](output_15_34.png)
+![png](output_24_34.png)
 
 
 
-![png](output_15_35.png)
+![png](output_24_35.png)
 
 
 
-![png](output_15_36.png)
+![png](output_24_36.png)
 
 
 
-![png](output_15_37.png)
+![png](output_24_37.png)
 
 
 
-![png](output_15_38.png)
+![png](output_24_38.png)
 
 
 
-![png](output_15_39.png)
+![png](output_24_39.png)
 
 
 
-![png](output_15_40.png)
+![png](output_24_40.png)
 
 
 
-![png](output_15_41.png)
+![png](output_24_41.png)
 
 
 
-![png](output_15_42.png)
+![png](output_24_42.png)
 
 
 
-![png](output_15_43.png)
+![png](output_24_43.png)
 
 
 
-![png](output_15_44.png)
+![png](output_24_44.png)
 
 
 
-![png](output_15_45.png)
+![png](output_24_45.png)
 
 
 
-![png](output_15_46.png)
+![png](output_24_46.png)
 
+
+Se suavizan los datos de cada estación calculando el promedio en tres meses y se grafican de nuevo:
 
 
 ```python
@@ -847,180 +867,182 @@ for estacion in tsS:
 
 
 
-![png](output_17_1.png)
+![png](output_27_1.png)
 
 
 
-![png](output_17_2.png)
+![png](output_27_2.png)
 
 
 
-![png](output_17_3.png)
+![png](output_27_3.png)
 
 
 
-![png](output_17_4.png)
+![png](output_27_4.png)
 
 
 
-![png](output_17_5.png)
+![png](output_27_5.png)
 
 
 
-![png](output_17_6.png)
+![png](output_27_6.png)
 
 
 
-![png](output_17_7.png)
+![png](output_27_7.png)
 
 
 
-![png](output_17_8.png)
+![png](output_27_8.png)
 
 
 
-![png](output_17_9.png)
+![png](output_27_9.png)
 
 
 
-![png](output_17_10.png)
+![png](output_27_10.png)
 
 
 
-![png](output_17_11.png)
+![png](output_27_11.png)
 
 
 
-![png](output_17_12.png)
+![png](output_27_12.png)
 
 
 
-![png](output_17_13.png)
+![png](output_27_13.png)
 
 
 
-![png](output_17_14.png)
+![png](output_27_14.png)
 
 
 
-![png](output_17_15.png)
+![png](output_27_15.png)
 
 
 
-![png](output_17_16.png)
+![png](output_27_16.png)
 
 
 
-![png](output_17_17.png)
+![png](output_27_17.png)
 
 
 
-![png](output_17_18.png)
+![png](output_27_18.png)
 
 
 
-![png](output_17_19.png)
+![png](output_27_19.png)
 
 
 
-![png](output_17_20.png)
+![png](output_27_20.png)
 
 
 
-![png](output_17_21.png)
+![png](output_27_21.png)
 
 
 
-![png](output_17_22.png)
+![png](output_27_22.png)
 
 
 
-![png](output_17_23.png)
+![png](output_27_23.png)
 
 
 
-![png](output_17_24.png)
+![png](output_27_24.png)
 
 
 
-![png](output_17_25.png)
+![png](output_27_25.png)
 
 
 
-![png](output_17_26.png)
+![png](output_27_26.png)
 
 
 
-![png](output_17_27.png)
+![png](output_27_27.png)
 
 
 
-![png](output_17_28.png)
+![png](output_27_28.png)
 
 
 
-![png](output_17_29.png)
+![png](output_27_29.png)
 
 
 
-![png](output_17_30.png)
+![png](output_27_30.png)
 
 
 
-![png](output_17_31.png)
+![png](output_27_31.png)
 
 
 
-![png](output_17_32.png)
+![png](output_27_32.png)
 
 
 
-![png](output_17_33.png)
+![png](output_27_33.png)
 
 
 
-![png](output_17_34.png)
+![png](output_27_34.png)
 
 
 
-![png](output_17_35.png)
+![png](output_27_35.png)
 
 
 
-![png](output_17_36.png)
+![png](output_27_36.png)
 
 
 
-![png](output_17_37.png)
+![png](output_27_37.png)
 
 
 
-![png](output_17_38.png)
+![png](output_27_38.png)
 
 
 
-![png](output_17_39.png)
+![png](output_27_39.png)
 
 
 
-![png](output_17_40.png)
+![png](output_27_40.png)
 
 
 
-![png](output_17_41.png)
+![png](output_27_41.png)
 
 
 
-![png](output_17_42.png)
+![png](output_27_42.png)
 
 
 
-![png](output_17_43.png)
+![png](output_27_43.png)
 
 
 
-![png](output_17_44.png)
+![png](output_27_44.png)
 
+
+Se utiliza una interpolación ya en algunas partes faltan datos
 
 
 ```python
@@ -1039,180 +1061,182 @@ for estacion in tsS:
 
 
 
-![png](output_19_1.png)
+![png](output_30_1.png)
 
 
 
-![png](output_19_2.png)
+![png](output_30_2.png)
 
 
 
-![png](output_19_3.png)
+![png](output_30_3.png)
 
 
 
-![png](output_19_4.png)
+![png](output_30_4.png)
 
 
 
-![png](output_19_5.png)
+![png](output_30_5.png)
 
 
 
-![png](output_19_6.png)
+![png](output_30_6.png)
 
 
 
-![png](output_19_7.png)
+![png](output_30_7.png)
 
 
 
-![png](output_19_8.png)
+![png](output_30_8.png)
 
 
 
-![png](output_19_9.png)
+![png](output_30_9.png)
 
 
 
-![png](output_19_10.png)
+![png](output_30_10.png)
 
 
 
-![png](output_19_11.png)
+![png](output_30_11.png)
 
 
 
-![png](output_19_12.png)
+![png](output_30_12.png)
 
 
 
-![png](output_19_13.png)
+![png](output_30_13.png)
 
 
 
-![png](output_19_14.png)
+![png](output_30_14.png)
 
 
 
-![png](output_19_15.png)
+![png](output_30_15.png)
 
 
 
-![png](output_19_16.png)
+![png](output_30_16.png)
 
 
 
-![png](output_19_17.png)
+![png](output_30_17.png)
 
 
 
-![png](output_19_18.png)
+![png](output_30_18.png)
 
 
 
-![png](output_19_19.png)
+![png](output_30_19.png)
 
 
 
-![png](output_19_20.png)
+![png](output_30_20.png)
 
 
 
-![png](output_19_21.png)
+![png](output_30_21.png)
 
 
 
-![png](output_19_22.png)
+![png](output_30_22.png)
 
 
 
-![png](output_19_23.png)
+![png](output_30_23.png)
 
 
 
-![png](output_19_24.png)
+![png](output_30_24.png)
 
 
 
-![png](output_19_25.png)
+![png](output_30_25.png)
 
 
 
-![png](output_19_26.png)
+![png](output_30_26.png)
 
 
 
-![png](output_19_27.png)
+![png](output_30_27.png)
 
 
 
-![png](output_19_28.png)
+![png](output_30_28.png)
 
 
 
-![png](output_19_29.png)
+![png](output_30_29.png)
 
 
 
-![png](output_19_30.png)
+![png](output_30_30.png)
 
 
 
-![png](output_19_31.png)
+![png](output_30_31.png)
 
 
 
-![png](output_19_32.png)
+![png](output_30_32.png)
 
 
 
-![png](output_19_33.png)
+![png](output_30_33.png)
 
 
 
-![png](output_19_34.png)
+![png](output_30_34.png)
 
 
 
-![png](output_19_35.png)
+![png](output_30_35.png)
 
 
 
-![png](output_19_36.png)
+![png](output_30_36.png)
 
 
 
-![png](output_19_37.png)
+![png](output_30_37.png)
 
 
 
-![png](output_19_38.png)
+![png](output_30_38.png)
 
 
 
-![png](output_19_39.png)
+![png](output_30_39.png)
 
 
 
-![png](output_19_40.png)
+![png](output_30_40.png)
 
 
 
-![png](output_19_41.png)
+![png](output_30_41.png)
 
 
 
-![png](output_19_42.png)
+![png](output_30_42.png)
 
 
 
-![png](output_19_43.png)
+![png](output_30_43.png)
 
 
 
-![png](output_19_44.png)
+![png](output_30_44.png)
 
+
+En la mayoría de las gráficas se ve que existe una tendencia, así que usaremos ARIMA para hacer el modelo. Este se muestra graficado abajo
 
 
 ```python
@@ -1238,7 +1262,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_1.png)
+![png](output_32_1.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1246,7 +1270,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_3.png)
+![png](output_32_3.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1254,7 +1278,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_5.png)
+![png](output_32_5.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1262,7 +1286,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_7.png)
+![png](output_32_7.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1270,7 +1294,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_9.png)
+![png](output_32_9.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1278,7 +1302,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_11.png)
+![png](output_32_11.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1286,7 +1310,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_13.png)
+![png](output_32_13.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1294,7 +1318,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_15.png)
+![png](output_32_15.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1302,7 +1326,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_17.png)
+![png](output_32_17.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1310,7 +1334,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_19.png)
+![png](output_32_19.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1318,7 +1342,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_21.png)
+![png](output_32_21.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1326,7 +1350,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_23.png)
+![png](output_32_23.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1334,7 +1358,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_25.png)
+![png](output_32_25.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1342,7 +1366,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_27.png)
+![png](output_32_27.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1350,7 +1374,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_29.png)
+![png](output_32_29.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1358,7 +1382,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_31.png)
+![png](output_32_31.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1366,7 +1390,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_33.png)
+![png](output_32_33.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1374,7 +1398,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_35.png)
+![png](output_32_35.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1382,7 +1406,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_37.png)
+![png](output_32_37.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1390,7 +1414,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_39.png)
+![png](output_32_39.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1398,7 +1422,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_41.png)
+![png](output_32_41.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-DEC will be used.
@@ -1406,7 +1430,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_43.png)
+![png](output_32_43.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-DEC will be used.
@@ -1414,7 +1438,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_45.png)
+![png](output_32_45.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1422,7 +1446,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_47.png)
+![png](output_32_47.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1430,7 +1454,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_49.png)
+![png](output_32_49.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1438,7 +1462,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_51.png)
+![png](output_32_51.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1446,7 +1470,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_53.png)
+![png](output_32_53.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1454,7 +1478,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_55.png)
+![png](output_32_55.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1462,7 +1486,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_57.png)
+![png](output_32_57.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1470,7 +1494,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_59.png)
+![png](output_32_59.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1478,7 +1502,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_61.png)
+![png](output_32_61.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1486,19 +1510,11 @@ for estacion in tsS:
 
 
 
-![png](output_20_63.png)
+![png](output_32_63.png)
 
 
 
-![png](output_20_64.png)
-
-
-    /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
-      % freq, ValueWarning)
-
-
-
-![png](output_20_66.png)
+![png](output_32_64.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1506,7 +1522,15 @@ for estacion in tsS:
 
 
 
-![png](output_20_68.png)
+![png](output_32_66.png)
+
+
+    /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
+      % freq, ValueWarning)
+
+
+
+![png](output_32_68.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-DEC will be used.
@@ -1514,7 +1538,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_70.png)
+![png](output_32_70.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1522,7 +1546,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_72.png)
+![png](output_32_72.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1530,7 +1554,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_74.png)
+![png](output_32_74.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1538,7 +1562,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_76.png)
+![png](output_32_76.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1546,7 +1570,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_78.png)
+![png](output_32_78.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1554,7 +1578,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_80.png)
+![png](output_32_80.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1562,7 +1586,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_82.png)
+![png](output_32_82.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1570,7 +1594,7 @@ for estacion in tsS:
 
 
 
-![png](output_20_84.png)
+![png](output_32_84.png)
 
 
     /home/luis/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:171: ValueWarning: No frequency information was provided, so inferred frequency Q-OCT will be used.
@@ -1578,5 +1602,5 @@ for estacion in tsS:
 
 
 
-![png](output_20_86.png)
+![png](output_32_86.png)
 
